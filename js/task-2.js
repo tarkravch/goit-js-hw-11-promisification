@@ -7,22 +7,21 @@ const users = [
 
 const toggleUserState = (allUsers, userName) => {
     return new Promise((resolve) => {
-        setTimeout(() => {
-            allUsers.map(user => {
-                if (user.name === userName) {
-                    resolve({...user })
-                }
-            })
+        allUsers.map(user => {
+            if (user.name === userName && user.active !== true) {
+                resolve({...user });
+            }
         })
-    })
+
+    });
 };
 
-const logger = updatedUsers => console.table(updatedUsers);
+const logger = updatedUsers => console.log(updatedUsers);
 
 /* toggleUserState(users, 'Mango', logger);
 toggleUserState(users, 'Lux', logger); */
 
-toggleUserState(users, 'Ajax').then(logger);
-toggleUserState(users, 'Poly').then(logger);
+toggleUserState(users, 'Mango').then(logger);
+toggleUserState(users, 'Lux').then(logger);
 
 // , active: !user.active
