@@ -18,16 +18,13 @@ const makeTransaction = (transaction) => {
     });
 };
 
-
-
-const logSuccess = (message) => {
+const logSuccess = message => {
     console.log(message);
 };
 
 const logError = message => {
     console.warn(message);
 };
-
 
 makeTransaction({ id: 70, amount: 150 })
     .then(logSuccess)
@@ -44,8 +41,3 @@ makeTransaction({ id: 72, amount: 75 })
 makeTransaction({ id: 73, amount: 100 })
     .then(logSuccess)
     .catch(logError);
-
-/* makeTransaction({ id: 70, amount: 150 }, logSuccess, logError);
-makeTransaction({ id: 71, amount: 230 }, logSuccess, logError);
-makeTransaction({ id: 72, amount: 75 }, logSuccess, logError);
-makeTransaction({ id: 73, amount: 100 }, logSuccess, logError); */

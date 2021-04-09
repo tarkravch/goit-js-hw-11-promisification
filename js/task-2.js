@@ -7,21 +7,15 @@ const users = [
 
 const toggleUserState = (allUsers, userName) => {
     return new Promise((resolve) => {
-        allUsers.map(user => {
-            if (user.name === userName && user.active !== true) {
-                resolve({...user });
-            }
-        })
+        const updatedUsers = allUsers.map(user =>
+            user.name === userName ? {...user, active: !user.active } : user
 
+        )
+        resolve(updatedUsers);
     });
 };
 
-const logger = updatedUsers => console.log(updatedUsers);
-
-/* toggleUserState(users, 'Mango', logger);
-toggleUserState(users, 'Lux', logger); */
+const logger = updatedUsers => console.table(updatedUsers);
 
 toggleUserState(users, 'Mango').then(logger);
 toggleUserState(users, 'Lux').then(logger);
-
-// , active: !user.active
